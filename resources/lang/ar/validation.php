@@ -120,7 +120,7 @@ return [
         'username' => 'اسم المُستخدم',
         'email' => 'البريد الالكتروني',
         'first_name' => 'الاسم الأول',
-        'last_name' => 'اسم العائلة',
+        'last_name' => 'اسم الاخير',
         'password' => 'كلمة السر',
         'password_confirmation' => 'تأكيد كلمة السر',
         'city' => 'المدينة',
@@ -145,5 +145,7 @@ return [
         'time' => 'الوقت',
         'available' => 'مُتاح',
         'size' => 'الحجم',
+        'image' => 'صوره',
+        'permissions' => 'الصلاحيات',
     ],
 ];
