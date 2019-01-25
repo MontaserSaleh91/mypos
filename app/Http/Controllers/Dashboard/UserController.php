@@ -23,10 +23,14 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::whereRoleIs('admin')->when($request->search, function ($query) use ($request) {
+        $users = User::whereRoleIs('admin')->where(function ($q) use ($request) {
 
-            return $query->where('first_name', 'like', '%' . $request->search . '%')
-                ->orWhere('last_name', 'like', '%' . $request->search . '%');
+            return $q->when($request->search, function ($query) use ($request) {
+
+                return $query->where('first_name', 'like', '%' . $request->search . '%')
+                    ->orWhere('last_name', 'like', '%' . $request->search . '%');
+
+            });
 
         })->latest()->paginate(5);
 
@@ -34,13 +38,15 @@ class UserController extends Controller
 
     }//end of index
 
-    public function create()
+    public
+    function create()
     {
         return view('dashboard.users.create');
 
     }//end of create
 
-    public function store(Request $request)
+    public
+    function store(Request $request)
     {
         $request->validate([
             'first_name' => 'required',
@@ -75,13 +81,15 @@ class UserController extends Controller
 
     }//end of store
 
-    public function edit(User $user)
+    public
+    function edit(User $user)
     {
         return view('dashboard.users.edit', compact('user'));
 
     }//end of user
 
-    public function update(Request $request, User $user)
+    public
+    function update(Request $request, User $user)
     {
         $request->validate([
             'first_name' => 'required',
@@ -119,7 +127,8 @@ class UserController extends Controller
 
     }//end of update
 
-    public function destroy(User $user)
+    public
+    function destroy(User $user)
     {
         if ($user->image != 'default.png') {
 

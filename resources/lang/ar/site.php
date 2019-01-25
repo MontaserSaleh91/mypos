@@ -34,4 +34,7 @@ return [
     'action' => 'اكشن',
 
     'permissions' => 'الصلاحيات',
+
+    'categories' => 'الاقسام',
+    'name' => 'الاسم',
 ];

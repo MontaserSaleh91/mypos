@@ -10,6 +10,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
 
+            //category routes
+            Route::resource('categories', 'CategoryController')->except(['show']);
+
         });//end of dashboard routes
     });
 
