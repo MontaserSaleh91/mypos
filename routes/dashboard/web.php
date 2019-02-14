@@ -7,11 +7,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
             Route::get('/index', 'DashboardController@index')->name('index');
 
+            //category routes
+            Route::resource('categories', 'CategoryController')->except(['show']);
+
+            //product routes
+            Route::resource('products', 'ProductController')->except(['show']);
+
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
 
-            //category routes
-            Route::resource('categories', 'CategoryController')->except(['show']);
+
 
         });//end of dashboard routes
     });
