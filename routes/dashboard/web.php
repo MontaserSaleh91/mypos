@@ -15,11 +15,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
             //client routes
             Route::resource('clients', 'ClientController')->except(['show']);
+            Route::resource('clients.orders', 'Client\OrderController')->except(['show']);
 
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
-
-
 
         });//end of dashboard routes
     });

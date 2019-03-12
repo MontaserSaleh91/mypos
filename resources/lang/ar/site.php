@@ -29,6 +29,8 @@ return [
     'clients' => 'العملاء',
     'phone' => 'التلفون',
     'address' => 'العنوان',
+    'orders' => 'الطلبات',
+    'add_order' => 'اضف طلب',
 
     'users' => 'المشرفين',
     'first_name' => 'الاسم الاول',

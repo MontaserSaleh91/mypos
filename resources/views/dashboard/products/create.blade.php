@@ -28,7 +28,7 @@
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
-                        
+
                         <div class="form-group">
                             <label>@lang('site.categories')</label>
                             <select name="category_id" class="form-control">

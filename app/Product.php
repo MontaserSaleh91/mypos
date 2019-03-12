@@ -8,7 +8,8 @@ class Product extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
     public $translatedAttributes = ['name', 'description'];
     protected $appends = ['image_path', 'profit_percent'];
 

@@ -39,7 +39,6 @@
                             </select>
                         </div>
 
-
                         @foreach (config('translatable.locales') as $locale)
                             <div class="form-group">
                                 <label>@lang('site.' . $locale . '.name')</label>
