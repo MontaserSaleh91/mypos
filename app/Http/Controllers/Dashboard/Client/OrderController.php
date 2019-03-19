@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Client;
 
+use App\Category;
 use App\Client;
 use App\Order;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class OrderController extends Controller
 
     public function create(Client $client)
     {
-        return view('dashboard.clients.orders.create');
+        $categories = Category::with('products')->get();
+        return view('dashboard.clients.orders.create', compact( 'client', 'categories'));
 
     }//end of create
 

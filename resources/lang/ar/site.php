@@ -25,6 +25,7 @@ return [
     'deleted_successfully' => 'تم حذف البيانات بنجاح',
 
     'no_data_found' => 'للاسف لا يوجد اي سجلات',
+    'no_records' => 'للاسف لا يوجد اي سجلات',
 
     'clients' => 'العملاء',
     'phone' => 'التلفون',
@@ -50,7 +51,11 @@ return [
     'category' => 'القسم',
 
     'products' => 'المنتجات',
+    'product' => 'المنتج',
+    'quantity' => 'الكميه',
+    'total' => 'المجموع',
     'purchase_price' => 'سعر الشراء',
+    'price' => 'السعر',
     'sale_price' => 'سعر البيع',
     'stock' => 'المخزن',
     'profit_percent' => 'المكسب',

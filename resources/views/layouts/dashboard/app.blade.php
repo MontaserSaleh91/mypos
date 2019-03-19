@@ -222,6 +222,10 @@
 {{--ckeditor standard--}}
 <script src="{{ asset('dashboard/plugins/ckeditor/ckeditor.js') }}"></script>
 
+{{--custom js--}}
+<script src="{{ asset('dashboard/js/custom/image_preview.js') }}"></script>
+<script src="{{ asset('dashboard/js/custom/order.js') }}"></script>
+
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
@@ -258,20 +262,20 @@
 
         });//end of delete
 
-        // image preview
-        $(".image").change(function () {
-
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('.image-preview').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(this.files[0]);
-            }
-
-        });
+        // // image preview
+        // $(".image").change(function () {
+        //
+        //     if (this.files && this.files[0]) {
+        //         var reader = new FileReader();
+        //
+        //         reader.onload = function (e) {
+        //             $('.image-preview').attr('src', e.target.result);
+        //         }
+        //
+        //         reader.readAsDataURL(this.files[0]);
+        //     }
+        //
+        // });
 
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
 
