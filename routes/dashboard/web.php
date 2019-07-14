@@ -17,6 +17,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::resource('clients', 'ClientController')->except(['show']);
             Route::resource('clients.orders', 'Client\OrderController')->except(['show']);
 
+            //order routes
+            Route::resource('orders', 'OrderController');
+            Route::get('/orders/{order}/products', 'OrderController@products')->name('orders.products');
+
+
             //user routes
             Route::resource('users', 'UserController')->except(['show']);
 

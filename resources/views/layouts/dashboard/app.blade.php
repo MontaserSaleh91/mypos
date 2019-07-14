@@ -34,6 +34,35 @@
             margin-right: 5px;
         }
 
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid #367FA9;
+            width: 60px;
+            height: 60px;
+            -webkit-animation: spin 1s linear infinite; /* Safari */
+            animation: spin 1s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
     </style>
     {{--<!-- jQuery 3 -->--}}
     <script src="{{ asset('dashboard_files/js/jquery.min.js') }}"></script>
@@ -224,6 +253,9 @@
 
 {{--jquery number--}}
 <script src="{{ asset('dashboard_files/js/jquery.number.min.js') }}"></script>
+
+{{--print this--}}
+<script src="{{ asset('dashboard_files/js/printThis.js') }}"></script>
 
 {{--custom js--}}
 <script src="{{ asset('dashboard_files/js/custom/image_preview.js') }}"></script>
