@@ -32,12 +32,11 @@
                         {{ csrf_field() }}
                         {{ method_field('put') }}
 
-                        @foreach (config('translatable.locales') as $locale)
                             <div class="form-group">
-                                <label>@lang('site.' . $locale . '.name')</label>
-                                <input type="text" name="{{ $locale }}[name]" class="form-control" value="{{ $category->translate($locale)->name }}">
+                                <label>@lang('site.name')</label>
+                                <input type="text" name="name" class="form-control" value="{{ $category->name }}">
                             </div>
-                        @endforeach
+     
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> @lang('site.edit')</button>

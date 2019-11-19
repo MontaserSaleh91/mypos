@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Dashboard;
 use App\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
     public function index(Request $request)
     {
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count(); 
         $clients = Client::when($request->search, function($q) use ($request){
 
             return $q->where('name', 'like', '%' . $request->search . '%')
@@ -18,13 +20,14 @@ class ClientController extends Controller
 
         })->latest()->paginate(5);
 
-        return view('dashboard.clients.index', compact('clients'));
+        return view('dashboard.clients.index', compact('clients','products_stock'));
 
     }//end of index
 
     public function create()
     {
-        return view('dashboard.clients.create');
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count();
+        return view('dashboard.clients.create',compact('products_stock'));
 
     }//end of create
 
@@ -49,7 +52,8 @@ class ClientController extends Controller
 
     public function edit(Client $client)
     {
-        return view('dashboard.clients.edit', compact('client'));
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count();
+        return view('dashboard.clients.edit', compact('client','products_stock'));
 
     }//end of edit
 

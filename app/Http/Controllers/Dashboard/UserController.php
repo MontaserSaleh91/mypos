@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
@@ -23,6 +24,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count();  
         $users = User::whereRoleIs('admin')->where(function ($q) use ($request) {
 
             return $q->when($request->search, function ($query) use ($request) {
@@ -34,14 +36,15 @@ class UserController extends Controller
 
         })->latest()->paginate(5);
 
-        return view('dashboard.users.index', compact('users'));
+        return view('dashboard.users.index', compact('users','products_stock'));
 
     }//end of index
 
     public
     function create()
     {
-        return view('dashboard.users.create');
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count();   
+        return view('dashboard.users.create',compact('products_stock'));
 
     }//end of create
 
@@ -84,7 +87,8 @@ class UserController extends Controller
     public
     function edit(User $user)
     {
-        return view('dashboard.users.edit', compact('user'));
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count();
+        return view('dashboard.users.edit', compact('user','products_stock'));
 
     }//end of user
 

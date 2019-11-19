@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateProductTranslationsTable extends Migration
 {
@@ -17,7 +18,7 @@ class CreateProductTranslationsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('locale')->index();
 
             $table->unique(['product_id', 'locale']);

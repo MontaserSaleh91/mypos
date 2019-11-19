@@ -5,6 +5,7 @@
         <tr>
             <th>@lang('site.name')</th>
             <th>@lang('site.quantity')</th>
+            <th>@lang('site.unit')</th>
             <th>@lang('site.price')</th>
         </tr>
         </thead>
@@ -14,8 +15,10 @@
             <tr>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->pivot->quantity }}</td>
+                <td>{{ $product->unit }}</td>
                 <td>{{ number_format($product->pivot->quantity * $product->sale_price, 2) }}</td>
             </tr>
+            
         @endforeach
         </tbody>
     </table>

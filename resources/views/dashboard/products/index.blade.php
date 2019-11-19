@@ -53,39 +53,45 @@
 
                 </div><!-- end of box header -->
 
+            <div class="row">
+                
+           
                 <div class="box-body">
 
                     @if ($products->count() > 0)
 
-                        <table class="table table-hover">
+                        <table class="table-responsive col-md-12 lg">
 
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>@lang('site.name')</th>
-                                <th>@lang('site.description')</th>
-                                <th>@lang('site.category')</th>
-                                <th>@lang('site.image')</th>
-                                <th>@lang('site.purchase_price')</th>
-                                <th>@lang('site.sale_price')</th>
-                                <th>@lang('site.profit_percent') %</th>
-                                <th>@lang('site.stock')</th>
-                                <th>@lang('site.action')</th>
+                                <th scope="col">#</th>
+                                <th scope="col">@lang('site.name')</th>
+                                {{-- <th scope="col">@lang('site.description')</th> --}}
+                                <th scope="col">@lang('site.category')</th>
+                                <th scope="col">@lang('site.image')</th>
+                                <th scope="col">@lang('site.purchase_price')</th>
+                                <th scope="col">@lang('site.sale_price')</th>
+                                <th scope="col">@lang('site.profit_percent') %</th>
+                                <th scope="col">@lang('site.stock')</th>
+                                <th scope="col">@lang('site.unit')</th>
+                                <th scope="col">@lang('site.action')</th>
+                                
                             </tr>
                             </thead>
                             
                             <tbody>
                             @foreach ($products as $index=>$product)
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
+                                    <th scope="row">{{ $index + 1 }}</th>
                                     <td>{{ $product->name }}</td>
-                                    <td>{!! $product->description !!}</td>
+                                    {{-- <td>{!! $product->description !!}</td> --}}
                                     <td>{{ $product->category->name }}</td>
                                     <td><img src="{{ $product->image_path }}" style="width: 100px"  class="img-thumbnail" alt=""></td>
                                     <td>{{ $product->purchase_price }}</td>
                                     <td>{{ $product->sale_price }}</td>
                                     <td>{{ $product->profit_percent }} %</td>
                                     <td>{{ $product->stock }}</td>
+                                    <td>{{ $product->unit }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('update_products'))
                                             <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
@@ -119,7 +125,7 @@
 
                 </div><!-- end of box body -->
 
-
+            </div>
             </div><!-- end of box -->
 
         </section><!-- end of content -->

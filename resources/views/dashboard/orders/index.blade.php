@@ -7,12 +7,12 @@
         <section class="content-header">
 
             <h1>@lang('site.orders')
-                <small>{{ $orders->total() }} @lang('site.orders')</small>
+                
             </h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
-                <li class="active">@lang('site.orders')</li>
+                <li class="active"><small>{{ $orders->total() }} @lang('site.orders')</small></li>
             </ol>
         </section>
 
@@ -26,7 +26,7 @@
 
                         <div class="box-header">
 
-                            <h3 class="box-title" style="margin-bottom: 10px">@lang('site.orders')</h3>
+                            <h3 class="box-title" style="margin-bottom: 10px">@lang('site.orders') {{ $orders->total() }}</h3>
 
                             <form action="{{ route('dashboard.orders.index') }}" method="get">
 

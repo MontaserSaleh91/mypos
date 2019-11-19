@@ -40,4 +40,5 @@ class Product extends Model
 
     }//end of orders
 
+
 }//end of model

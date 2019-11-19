@@ -53,17 +53,24 @@
                                                         <tr>
                                                             <th>@lang('site.name')</th>
                                                             <th>@lang('site.stock')</th>
+                                                            <th>@lang('site.unit')</th>
                                                             <th>@lang('site.price')</th>
                                                             <th>@lang('site.add')</th>
                                                         </tr>
-
+                                                       
                                                         @foreach ($category->products as $product)
+                                                        @if ($product->stock > 0)
+                                                            
+                                                        
                                                             <tr>
                                                                 <td>{{ $product->name }}</td>
                                                                 <td>{{ $product->stock }}</td>
+                                                                <td>{{ $product->unit }}</td>
                                                                 <td>{{ number_format($product->sale_price, 2) }}</td>
                                                                 <td>
+                                                                    
                                                                     <a href=""
+                                                                    
                                                                        id="product-{{ $product->id }}"
                                                                        data-name="{{ $product->name }}"
                                                                        data-id="{{ $product->id }}"
@@ -73,6 +80,7 @@
                                                                     </a>
                                                                 </td>
                                                             </tr>
+                                                            @endif
                                                         @endforeach
 
                                                     </table><!-- end of table -->

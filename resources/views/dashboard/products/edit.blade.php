@@ -39,18 +39,18 @@
                             </select>
                         </div>
 
-                        @foreach (config('translatable.locales') as $locale)
+            
                             <div class="form-group">
-                                <label>@lang('site.' . $locale . '.name')</label>
-                                <input type="text" name="{{ $locale }}[name]" class="form-control" value="{{ $product->name }}">
+                                <label>@lang('site.name')</label>
+                                <input type="text" name="name" class="form-control" value="{{ $product->name }}">
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>@lang('site.' . $locale . '.description')</label>
                                 <textarea name="{{ $locale }}[description]" class="form-control ckeditor">{{ $product->description }}</textarea>
-                            </div>
+                            </div> --}}
 
-                        @endforeach
+                       
 
                         <div class="form-group">
                             <label>@lang('site.image')</label>
@@ -75,6 +75,11 @@
                             <label>@lang('site.stock')</label>
                             <input type="number" name="stock" class="form-control" value="{{ $product->stock}}">
                         </div>
+
+                        <div class="form-group">
+                                <label>@lang('site.unit')</label>
+                                <input type="text" name="unit" class="form-control" value="{{ $product->unit }}">
+                            </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.edit')</button>

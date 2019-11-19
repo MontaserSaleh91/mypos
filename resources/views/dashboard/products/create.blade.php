@@ -40,18 +40,18 @@
                         </div>
                         
 
-                        @foreach (config('translatable.locales') as $locale)
+                        
                             <div class="form-group">
-                                <label>@lang('site.' . $locale . '.name')</label>
-                                <input type="text" name="{{ $locale }}[name]" class="form-control" value="{{ old($locale . '.name') }}">
+                                <label>@lang('site.name')</label>
+                                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                             </div>
 
-                            <div class="form-group">
-                                <label>@lang('site.' . $locale . '.description')</label>
-                                <textarea name="{{ $locale }}[description]" class="form-control ckeditor">{{ old($locale . '.description') }}</textarea>
-                            </div>
+                            {{-- <div class="form-group">
+                                <label>@lang('site.description')</label>
+                                <textarea name="description" class="form-control ckeditor">{{ old('description') }}</textarea>
+                            </div> --}}
 
-                        @endforeach
+                       
 
                         <div class="form-group">
                             <label>@lang('site.image')</label>
@@ -74,8 +74,13 @@
 
                         <div class="form-group">
                             <label>@lang('site.stock')</label>
-                            <input type="number" name="stock" class="form-control" value="{{ old('stock') }}">
+                            <input type="number" name="stock" class="form-control" step="0.01" value="{{ old('stock') }}">
                         </div>
+
+                        <div class="form-group">
+                                <label>@lang('site.unit')</label>
+                                <input type="text" name="unit" class="form-control" value="{{ old('unit') }}" placeholder="@lang('site.unit_ex')">
+                            </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</button>

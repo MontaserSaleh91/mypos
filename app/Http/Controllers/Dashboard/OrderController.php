@@ -5,25 +5,28 @@ namespace App\Http\Controllers\Dashboard;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function index(Request $request)
     {
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count(); 
         $orders = Order::whereHas('client', function ($q) use ($request) {
 
             return $q->where('name', 'like', '%' . $request->search . '%');
 
-        })->paginate(5);
+        })->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('dashboard.orders.index', compact('orders'));
+        return view('dashboard.orders.index', compact('orders','products_stock'));
 
     }//end of index
 
     public function products(Order $order)
     {
+        $products_stock = DB::table('products')->where('stock', '<', 1)->count(); 
         $products = $order->products;
-        return view('dashboard.orders._products', compact('order', 'products'));
+        return view('dashboard.orders._products', compact('order', 'products','products_stock'));
 
     }//end of products
     
